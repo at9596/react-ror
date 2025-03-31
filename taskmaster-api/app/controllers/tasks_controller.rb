@@ -1,7 +1,20 @@
 class TasksController < ApplicationController
   before_action :set_task, only: [:show, :update, :destroy]
+  
+  # GET /tasks/completed
+  def completed
+    completed_tasks = Task.completed
+    @pagy, @records = pagy(completed_tasks)
+    render json: {
+      tasks: @records
+    }
+  end
 
- 
+  # GET /tasks/search
+  def search
+    tasks = Task.ransack(title_cont: params[:title]).result
+    render json: tasks
+  end
 
   def show
     render json: @task

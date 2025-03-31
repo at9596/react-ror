@@ -50,3 +50,6 @@ gem 'jwt' # For token-based authentication
 gem 'rack-cors' # For handling CORS
 gem 'pundit' # For authorization
 gem 'faker' # For generating sample data
+gem 'pagy', '~> 9.3'
+# Use ransack gem for object based searching
+gem 'ransack'
